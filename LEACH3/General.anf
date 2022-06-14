@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
+  <inputs>
+    <inputs name="/LEACH3/results/General-*.vec"/>
+    <inputs name="/LEACH3/results/General-*.sca"/>
+  </inputs>
+  <datasets>
+    <datasets name="powerConsumption:vector SimpleNet.host[0].energyStorage">
+      <items xsi:type="scave:Add" filterPattern="module(SimpleNet.host[0].energyStorage) AND name(powerConsumption:vector)" type="VECTOR"/>
+      <items xsi:type="scave:LineChart" name="powerConsumption:vector SimpleNet.host[0].energyStorage"/>
+    </datasets>
+  </datasets>
+  <chartSheets/>
+</scave:Analysis>

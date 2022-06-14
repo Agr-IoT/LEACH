@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
+  <inputs>
+    <inputs name="/LEACH3/results/General-CH=0.02-#0.sca"/>
+    <inputs name="/LEACH3/results/General-CH=0.02-#0.vec"/>
+    <inputs name="/LEACH3/results/General-CH=0.04-#0.sca"/>
+    <inputs name="/LEACH3/results/General-CH=0.04-#0.vec"/>
+    <inputs name="/LEACH3/results/General-CH=0.06-#0.sca"/>
+    <inputs name="/LEACH3/results/General-CH=0.06-#0.vec"/>
+    <inputs name="/LEACH3/results/General-CH=0.08-#0.sca"/>
+    <inputs name="/LEACH3/results/General-CH=0.08-#0.vec"/>
+    <inputs name="/LEACH3/results/General-CH=0.1-#0.sca"/>
+    <inputs name="/LEACH3/results/General-CH=0.1-#0.vec"/>
+  </inputs>
+  <datasets/>
+  <chartSheets/>
+</scave:Analysis>
