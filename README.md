@@ -66,7 +66,7 @@ The simulations consists of 3 layers organized by their directories;
 
 ## Licenses
 
-The developed mobility models are released under GPL v3.0 license.
+The developed mobility models are released under LGPL v3.0 license.
 
 ## Questions or Comments
 
