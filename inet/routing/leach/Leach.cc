@@ -150,6 +150,7 @@ namespace inet {
         // if node is sending message
         if (msg->isSelfMessage())
         {
+            srand((unsigned)time(NULL));
             randNo = (double) rand()/RAND_MAX;
             threshold = generateThresholdValue(subIntervalCounter);
 
