@@ -1,17 +1,4 @@
-//
-// Copyright (C) 2008
-// DSDV simple example for INET (add-on)
-// Version 2.0
-// Diogo Antio & Pedro Menezes
-// Instituto Superior Tecnico
-// Lisboa - Portugal
-// This version and newer version can be found at http://dsdv.8rf.com
-// This code was written while assisting the course "Redes moveis e sem fios" http://comp.ist.utl.pt/ec-cm
-// Autorization to use and modify this code not needed :P
-// The authors hope it will be useful to help understand how
-// INET and OMNET++ works(more specifically INET 20061020 and omnet++ 3.3).
-// Also we hope it will help in the developing of routing protocols using INET.
-//
+
 
 #ifndef __INET_DSDV_H
 #define __INET_DSDV_H
