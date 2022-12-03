@@ -150,7 +150,7 @@ namespace inet {
         // if node is sending message
         if (msg->isSelfMessage())
         {
-            randNo = (double) rand()/RAND_MAX;
+            randNo = dblrand(0);
             threshold = generateThresholdValue(subIntervalCounter);
 
             if (randNo < threshold && !isNodeCH(nodeAddr)) {
