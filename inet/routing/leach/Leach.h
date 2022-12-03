@@ -76,6 +76,7 @@ class INET_API Leach : public RoutingProtocolBase
   public:
     Leach();
     ~Leach();
+    enum LeachState { nch, ch }; // written in lower caps as it conflicts with enum in LeachPkts.msg file
 
   protected:
     virtual int numInitStages() const override { return NUM_INIT_STAGES; }
@@ -90,13 +91,17 @@ class INET_API Leach : public RoutingProtocolBase
     virtual void handleCrashOperation(LifecycleOperation *operation) override  { stop(); }
     void start();
     void stop();
+    virtual void refreshDisplay() const override;
 
     double generateThresholdValue(int subInterval);
     void sendData2CH(Ipv4Address destAddr, Ipv4Address nodeAddr);
     void sendData2BS(Ipv4Address CHAddr);
     void addToNodeList(Ipv4Address nodeAddr, Ipv4Address CHAddr, double energy);
+    virtual void setLeachState(LeachState ls);
     bool isNodeCH(Ipv4Address nodeAddr);
     Ipv4Address getIdealCH(Ipv4Address nodeAddr);
+
+    LeachState leachState;
 };
 
 

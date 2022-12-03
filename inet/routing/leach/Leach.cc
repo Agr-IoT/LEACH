@@ -31,6 +31,7 @@ namespace inet {
     double randNo;
     Ipv4Address idealCH;
 
+    Register_Enum(inet::Leach, (Leach::ch, Leach::nch));
     Define_Module(Leach);
 
     Leach::ForwardEntry::~ForwardEntry()
@@ -141,6 +142,7 @@ namespace inet {
             threshold = generateThresholdValue(subIntervalCounter);
 
             if (randNo < threshold && !isNodeCH(nodeAddr)) {
+                setLeachState(ch);
                 CHlist.push_back(nodeAddr);
                 handleSelfMessage(msg);
             }
@@ -254,6 +256,10 @@ namespace inet {
         nodeList.push_back(node);
     }
 
+    void Leach::setLeachState(LeachState ls) {
+        leachState = ls;
+    }
+
     void Leach::sendData2CH (Ipv4Address destAddr,Ipv4Address nodeAddr) {
         auto dataPkt = makeShared<LeachDataPkt>();
         dataPkt->setPacketType(NCH);
@@ -302,6 +308,7 @@ namespace inet {
 //        send(bsPacket, "ipOut");
         bsPacket = nullptr;
         bsPkt = nullptr;
+        setLeachState(nch);
     }
 
     bool Leach::isNodeCH(Ipv4Address nodeAddr) {
@@ -328,6 +335,28 @@ namespace inet {
             }
         }
         return tempIdealCHAddr;
+    }
+
+    void Leach::refreshDisplay() const {
+        const char *icon;
+        switch (leachState) {
+            case nch:
+                icon = "";
+                break;
+            case ch:
+                icon = "status/green";
+                break;
+            default:
+                throw cRuntimeError("Unknown LEACH status");
+        }
+        auto& displayString = getDisplayString();
+        if (*icon) {
+            displayString.setTagArg("i2", 0, icon);
+            host->getDisplayString().setTagArg("i2", 0, icon);
+        } else {
+            displayString.removeTag("i2");
+            host->getDisplayString().removeTag("i2");
+        }
     }
 
 }
