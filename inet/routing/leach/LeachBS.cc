@@ -85,6 +85,10 @@ namespace inet {
             CHK(interface80211ptr->getProtocolData<Ipv4InterfaceData>())->joinMulticastGroup(Ipv4Address::LL_MANET_ROUTERS);
     }
 
+    void LeachBS::stop() {
+
+    }
+
     void LeachBS::handleMessageWhenUp(cMessage *msg)
         {
             Ipv4Address nodeAddr = (interface80211ptr->getProtocolData<Ipv4InterfaceData>()->getIPAddress());
