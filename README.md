@@ -11,11 +11,11 @@ Unlike the standard LEACH protocol, the implemented version uses IEEE 802.15.4 s
 
 Follow the below steps to run the simulation.
 
-1. Requirements - [Prerequisites](#prerequisites)
+1. Prerequisites 
 
-2. Install OMNeT++, INET Framework - [Install and Build](#install-and-build)
+2. Install OMNeT++, INET Framework -
 
-3. Run models - [Running Models](#running-models)
+3. Run models
 
 
 ## 1. Prerequisites
@@ -66,11 +66,14 @@ The simulations consists of 3 layers organized by their directories;
 
 ## Licenses
 
-The developed mobility models are released under LGPL v3.0 license.
+This model is released under LGPL v3.0 license.
 
 ## Questions or Comments
 
 If you have any questions, comments or suggestions, please include them as an issue in this repository.
+Please be mindful to adhere to the issue template provided and add a reply when an issue is resolved.
+
+Resolved issues will be closed at the maintainers discretion once identified as stale.
 
 ## Model Developers
 
