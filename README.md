@@ -13,7 +13,7 @@ Follow the below steps to run the simulation.
 
 1. Requirements - [Prerequisites](#prerequisites)
 
-2. Install OMNeT++, INET Framework and the mobility models (SOLAR and CMM) - [Install and Build](#install-and-build)
+2. Install OMNeT++, INET Framework - [Install and Build](#install-and-build)
 
 3. Run models - [Running Models](#running-models)
 
@@ -74,7 +74,7 @@ If you have any questions, comments or suggestions, please include them as an is
 
 ## Model Developers
 
-The implementation of these mobility models were designed and developed by,
+This model was designed and  developed by,
 
   - [Nuwan Jayawardene](https://github.com/n-jay)
 
