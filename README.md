@@ -9,7 +9,7 @@ Unlike the standard LEACH protocol, the implemented version uses IEEE 802.15.4 s
     <img src="images/LEACH-stages.png">
 </figure>
 
-Here are the most important links to get the simulation working.
+Follow the below steps to run the simulation.
 
 1. Requirements - [Prerequisites](#prerequisites)
 
@@ -18,7 +18,7 @@ Here are the most important links to get the simulation working.
 3. Run models - [Running Models](#running-models)
 
 
-## Prerequisites
+## 1. Prerequisites
 
 These models have been tested on the following versions of INET and OMNeT++.
 
@@ -27,7 +27,7 @@ These models have been tested on the following versions of INET and OMNeT++.
 - INET Framework version 4.2.5
 
 
-## Install and Build
+## 2. Install and Build
 
 Follow the following procedure to install and build the models.
 
@@ -44,7 +44,7 @@ Follow the following procedure to install and build the models.
 6. Rebuild INET and LEACH3  projects
 
 
-## Running Models
+## 3. Running Models
 
 - Use the *omnetpp.ini* files provided in the LEACH3 directory to run the simulation
 
@@ -76,5 +76,5 @@ If you have any questions, comments or suggestions, please include them as an is
 
 The implementation of these mobility models were designed and developed by,
 
-  - Nuwan Jayawardene
+  - [Nuwan Jayawardene](https://github.com/n-jay)
 
