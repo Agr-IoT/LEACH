@@ -53,12 +53,18 @@ class INET_API Leach : public RoutingProtocolBase
 
     Ipv4Address idealCH;
 
-    simsignal_t controlPktSendSignal;
-    simsignal_t dataPktSendSignal;
-    simsignal_t bsPktSendSignal;
-    simsignal_t controlPktReceiveSignal;
-    simsignal_t dataPktReceiveSignal;
+    // simsignal_t controlPktSendSignal;
+    // simsignal_t dataPktSendSignal;
+    // simsignal_t bsPktSendSignal;
+    // simsignal_t controlPktReceiveSignal;
+    // simsignal_t dataPktReceiveSignal;
     simsignal_t subIntervalTot;
+
+    int dataPktSent;
+    int dataPktReceived;
+    int controlPktSent;
+    int controlPktReceived;
+    int bsPktSent;
 
   protected:
     simtime_t helloInterval;
@@ -92,6 +98,7 @@ class INET_API Leach : public RoutingProtocolBase
     void start();
     void stop();
     virtual void refreshDisplay() const override;
+    void finish();
 
     double generateThresholdValue(int subInterval);
     void sendData2CH(Ipv4Address destAddr, Ipv4Address nodeAddr);

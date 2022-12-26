@@ -67,6 +67,12 @@ namespace inet {
             clusterHeadPercentage = par("clusterHeadPercentage");
             numNodes = par("numNodes");
 
+            dataPktSent = 0;
+            dataPktReceived = 0;
+            controlPktSent = 0;
+            controlPktReceived = 0;
+            bsPktSent = 0;
+
             dataPktSendDelay = par("dataPktSendDelay");
             CHPktSendDelay = par("CHPktSendDelay");
             roundDuration = par("roundDuration");
@@ -153,7 +159,7 @@ namespace inet {
                     nodeCounter = 0;
                     subIntervalCounter += 1;
                     subIntervalTotalVar += 1;
-                    emit(subIntervalTot, subIntervalTotalVar);
+                    // emit(subIntervalTot, subIntervalTotalVar);
                 }
             } else {
                 subIntervalCounter = 0;
@@ -179,6 +185,7 @@ namespace inet {
             if (msg->arrivedOn("ipIn")) {
                // packet from CH to NCH nodes
                if (packetType == 1 && !isNodeCH(nodeAddr)) {
+                    controlPktReceived += 1;
                    Ipv4Address srcAddr = receivedCtrlPkt->getSrcAddress();
 
                    auto signalPowerInd = receivedPkt->getTag<SignalPowerInd>();
@@ -189,6 +196,7 @@ namespace inet {
 
                // packet from NCH node to CH
                } else if (packetType == 2 && isNodeCH(nodeAddr)) {
+                    dataPktReceived += 1;
                    sendData2BS(nodeAddr);
 
                // packet from CH to BS
@@ -228,10 +236,11 @@ namespace inet {
 
             //broadcast to other nodes the hello message
             send(packet, "ipOut");
+            controlPktSent += 1;
             packet = nullptr;
             ctrlPkt = nullptr;
 
-            emit(controlPktSendSignal,packet);
+            // emit(controlPktSendSignal,packet);
             bubble("Sending new enrolment message");
         }
         else
@@ -282,7 +291,8 @@ namespace inet {
         dataPacket->addTag<DispatchProtocolReq>()->setProtocol(&Protocol::ipv4);
 
         sendDelayed(dataPacket, dataPktSendDelay, "ipOut");
-        emit(dataPktSendSignal, dataPacket);
+        dataPktSent += 1;
+        // emit(dataPktSendSignal, dataPacket);
         dataPacket = nullptr;
         dataPkt = nullptr;
 
@@ -305,6 +315,7 @@ namespace inet {
         bsPacket->addTag<DispatchProtocolReq>()->setProtocol(&Protocol::ipv4);
 
         sendDelayed(bsPacket, CHPktSendDelay, "ipOut");
+        bsPktSent += 1;
 //        send(bsPacket, "ipOut");
         bsPacket = nullptr;
         bsPkt = nullptr;
@@ -357,6 +368,22 @@ namespace inet {
             displayString.removeTag("i2");
             host->getDisplayString().removeTag("i2");
         }
+    }
+
+    void Leach::finish() {
+
+        EV << "Total data packets sent to CH:                       " << dataPktSent << endl;
+        EV << "Total data packets received by CH from NCHs:         " << dataPktReceived << endl;
+        EV << "Total control packets sent by CH:                    " << controlPktSent << endl;
+        EV << "Total control packets received by NCHs from CH:      " << controlPktReceived << endl;
+        EV << "Total BS packets sent by CH:                         " << bsPktSent << endl;
+
+        recordScalar("#dataPktSent", dataPktSent);
+        recordScalar("#dataPktReceived", dataPktReceived);
+        recordScalar("#controlPktSent", controlPktSent);
+        recordScalar("#controlPktReceived", controlPktReceived);
+        recordScalar("#bsPktSent", bsPktSent);
+
     }
 
 }
