@@ -300,7 +300,7 @@ namespace inet {
 
     void Leach::sendData2BS(Ipv4Address CHAddr) {
         auto bsPkt = makeShared<LeachBSPkt>();
-        bsPkt->setPacketType(CH);
+        bsPkt->setPacketType(BS);
 
         bsPkt->setChunkLength(b(128));
         bsPkt->setCHAddr(CHAddr);
