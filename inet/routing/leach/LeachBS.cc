@@ -49,6 +49,8 @@ namespace inet {
                 host = getContainingNode(this);
                 ift = getModuleFromPar<IInterfaceTable>(par("interfaceTableModule"), this);
 
+                bsPktReceived = 0;
+
             }
             else if (stage == INITSTAGE_ROUTING_PROTOCOLS)
             {
@@ -116,7 +118,7 @@ namespace inet {
                        delete msg;
                    // packet from CH to BS
                    } else if (packetType == 3) {
-
+                        bsPktReceived += 1;
                    }
                 } else {
                     throw cRuntimeError("Message arrived on unknown gate %s", msg->getArrivalGate()->getName());
@@ -124,6 +126,12 @@ namespace inet {
             } else {
                 throw cRuntimeError("Message not supported %s", msg->getName());
             }
+        }
+
+        void LeachBS::finish() {
+            EV << "Total data packets received by BS from CHs       " << bsPktReceived << endl;
+
+            recordScalar("#bsPktReceived", bsPktReceived);
         }
 
 } /* namespace inet */

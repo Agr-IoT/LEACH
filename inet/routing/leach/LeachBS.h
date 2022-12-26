@@ -30,6 +30,9 @@
 namespace inet {
 
 class INET_API LeachBS : public RoutingProtocolBase {
+private:
+    int bsPktReceived;
+
 public:
     LeachBS();
     virtual ~LeachBS();
@@ -50,6 +53,7 @@ protected:
     virtual void handleCrashOperation(LifecycleOperation *operation) override  { stop(); }
     void start();
     void stop();
+    void finish();
 };
 
 } /* namespace inet */
