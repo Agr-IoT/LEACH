@@ -86,10 +86,6 @@ namespace inet {
             WATCH(subIntervalCounter);
             WATCH(intervalCounter);
 
-            controlPktSendSignal = registerSignal("controlPktSendSignal");
-            dataPktSendSignal = registerSignal("dataPktSendSignal");
-            bsPktSendSignal = registerSignal("bsPktSendSignal");
-            subIntervalTot = registerSignal("subIntervalTot");
         }
         else if (stage == INITSTAGE_ROUTING_PROTOCOLS)
         {
