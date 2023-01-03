@@ -86,6 +86,8 @@ namespace inet {
             WATCH(subIntervalCounter);
             WATCH(intervalCounter);
 
+            round = 0;
+
         }
         else if (stage == INITSTAGE_ROUTING_PROTOCOLS)
         {
@@ -149,6 +151,8 @@ namespace inet {
                 handleSelfMessage(msg);
             }
 
+            // Older implementation calculating LEACH round number
+            /*
             nodeCounter += 1;
             if (subIntervalCounter <= (1/clusterHeadPercentage)) {
                 if (nodeCounter > (numNodes-1)) {
@@ -162,6 +166,12 @@ namespace inet {
                 intervalCounter += 1;
                 nodeList.clear();
                 CHlist.clear();
+            } 
+            */
+
+           round += 1;
+            if (round == (1/clusterHeadPercentage)) {
+                round = 0;
             }
 
             // schedule another self message every time new one is received by node
@@ -245,10 +255,22 @@ namespace inet {
         }
     }
 
+    //  Older implementation of threshold generation
+    /* 
     double Leach::generateThresholdValue(int subInterval) {
         double threshold = (clusterHeadPercentage/1-clusterHeadPercentage*(fmod(subInterval,(1.0/clusterHeadPercentage))));
         if (threshold == 0) {
             subIntervalCounter = 0;
+        }
+        return threshold;
+    } 
+    */
+
+    double Leach::Leach::generateThresholdValue(int round) {
+        int rounds = 1.0/clusterHeadPercentage;
+        double threshold = (clusterHeadPercentage/(1-clusterHeadPercentage*(fmod(round,rounds))));
+        if (threshold == 1) {
+            round = 0;
         }
         return threshold;
     }

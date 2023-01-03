@@ -65,6 +65,7 @@ class INET_API Leach : public RoutingProtocolBase
     int controlPktSent;
     int controlPktReceived;
     int bsPktSent;
+    int round;
 
   protected:
     simtime_t helloInterval;
