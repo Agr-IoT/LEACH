@@ -3,10 +3,10 @@
 The LEACH (Low-energy adaptive clustering hierarchy) is a hierachical adhoc routing protocol for Wireless Sensor Networks. It is based on the [paper](https://ieeexplore.ieee.org/abstract/document/926982) by W.R. Heinzelman et.al titled _Energy-efficient communication protocol for wireless microsensor networks_ published in 2000.
 The code in this repository is an implementation of it for the [INET Framework](https://inet.omnetpp.org) of the [OMNeT++](https://omnetpp.org) simulator.
 
-Unlike the standard LEACH protocol, the implemented version uses IEEE 802.15.4 standard to manage to the Physical and Data-Link layers. Therefore all MAC level communications are managed with CSMA. Accordingly the updated stages are as follows;
+Unlike the standard LEACH protocol, the implemented version uses IEEE 802.15.4 standard to manage to the Physical and Data-Link layers. However as described in the original paper, the setup phase runs on CSMA with the steady state phase operating on slotted TDMA. Accordingly the stages are as follows;
 
 <figure>
-    <img src="images/LEACH-stages.png">
+    <img src="images/LEACH-stages-new.png">
 </figure>
 
 Follow the below steps to run the simulation.
