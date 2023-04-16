@@ -26,6 +26,7 @@
 #include "inet/networklayer/ipv4/Ipv4RoutingTable.h"
 #include "inet/routing/base/RoutingProtocolBase.h"
 #include "inet/routing/leach/LeachPkts_m.h"
+#include "inet/routing/leach/Leach.h"
 
 namespace inet {
 
@@ -54,6 +55,10 @@ protected:
     void start();
     void stop();
     void finish();
+
+    void addToPacketRecLog(string fingerprint);
+
+    void generatePacketRecLogCSV();
 };
 
 } /* namespace inet */
